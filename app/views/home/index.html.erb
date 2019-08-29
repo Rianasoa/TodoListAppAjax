@@ -1,0 +1,35 @@
+<h1 class="text-center mb-4">Welcome to smy todolist app</h1>
+<%= render 'layouts/task_form'  %>
+<div class="container">
+  <ul>
+  <% @categories.each do  |category|%>
+  <li><%= category.title  %></li>
+  <div class="card">
+    <ul id="<%= category.id %>">
+      <% category.tasks.each do |task|  %>
+      <li id="<%= task.id%>">
+        <%= task.title  %>
+        <% unless task.deadline.nil? %>
+          , to read: <%= task.deadline.strftime('%D')  %>
+        <% end %>
+      <%= check_box_tag :value,1, task.status , data: { remote: true, url: task_path(task.id), params:{ id:task.id, status: task.status}.to_param, method: "put" }%>
+      <a href="/tasks/<%= task.id%>" class="fa fa-trash" data-method="delete" data-remote="true" ></a>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  </ul>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @tasks.each do |task|  %>
+      <div class="card col-3">
+        <% unless task.image.nil? %>
+          <%= image_tag task.image, class: "rounded-circle" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
