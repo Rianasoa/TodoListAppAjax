@@ -1,0 +1,7 @@
+alert("Show email");
+var email_body = $("<%= j render 'show', email: @email %>");
+$('#emailbody').text("");
+$('#emailbody').append(email_body);
+
+
+document.getElementsByClassName("non-lu").css.fontWeight('normal');

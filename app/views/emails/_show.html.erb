@@ -1,0 +1,15 @@
+
+  <div id="emailobject">
+  <div class="card-header">
+    <h3>Email n° <%= email.id%></h3>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= email.object%></h5>
+    <p class="card-text"><%= email.body%></p>
+    <a href="/emails/<%= email.id%>" class="btn btn-primary btn-read" data-method="put" data-remote="true">Marquer comme non lu</a>
+    <a href="/emails/<%= email.id%>" class="btn btn-danger" data-method="delete" data-remote="true">Supprimer</a>
+  </div>
+      
+  </div>
+
+

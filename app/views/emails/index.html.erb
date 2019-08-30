@@ -1,25 +1,32 @@
 <div>	
 <a href="/emails" class="btn btn-primary" data-method="post" data-remote="true">Reçevoir un email</a>
 </div><br>
+<div class="row">
+	<div class="col-sm-6">
+		<table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">ID</th>
+		      <th scope="col">Lists of Object Email</th>
+		    </tr>
+		  </thead>
+		  <tbody id="email">
+		    	<% @emails.each do |email|%>
+		    <tr id="<%=email.id%>">
+		      <th scope="row" ><%= email.id%> </th>
+		      <td <%if email.read == false%> class="non-lu " <%end%>>
+		      	<a href="/emails/<%=email.id%>" data-remote="true" <%if email.read == false%> class="gras" <%end%>><%= email.object%></a>  	
+		      </td>
+		      	
+		    </tr>
+		    <%end%>
+		    
+		  </tbody>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Object Email</th>
-      <th scope="col">Body Email</th>
-    </tr>
-  </thead>
-  <tbody id="email">
-    	<% @emails.each do |email|%>
-    <tr id="<%=email.id%>">
-      <th scope="row"><%= email.id%></th>
-      <td class="emailobject"><%= email.object%></td>
-      <td class="emailbody"><%= email.body%></td>
-      	
-    </tr>
-    <%end%>
-    
-  </tbody>
-
-</table>
+		</table>
+	</div>
+	<div id="emailbody" class="col-qsm-6">
+		    	
+	</div>
+		
+</div>

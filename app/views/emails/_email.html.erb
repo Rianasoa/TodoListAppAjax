@@ -1,5 +1,6 @@
 <tr id="<%=email.id%>">
-      <th scope="row"><%= email.id%></th>
-      <td class="emailobject"><%= email.object%></td>
-      <td class="emailbody"><%= email.body%></td>      	
+		      <th scope="row"><%= email.id%></th>
+		      <td class="emailobject">
+		      	<a href="/emails/<%=email.id%>" data-remote="true" class="gras" ><%= email.object%></a>	
+		      </td>
 </tr>
