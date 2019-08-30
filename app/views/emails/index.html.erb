@@ -1,28 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<div class="container">
-		<div class="row">
-			
-			<div class="col-sm-6">	
-				<h2>Listes des objects emails</h2>
-				<% @emails.each do |email|%>
-				<%= email.object%><br>
-				<%end%>
-			</div>
-			<div class="col-sm-6">
-				<h2>Content</h2>
-				<% @emails.each do |email|%>
-				<%= email.body%><br>
-				<%end%>
-			</div>
-			
-		</div>
-		
-
-	</div>
-</body>
-</html>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Object Email</th>
+      <th scope="col">Body Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    	<% @emails.each do |email|%>
+    <tr>
+      <th scope="row"><%= email.id%></th>
+      <td class="emailobject"><%= email.object%></td>
+      <td class="emailbody"><%= email.body%></td>
+      	
+    </tr>
+    <%end%>
+    
+  </tbody>
+</table>

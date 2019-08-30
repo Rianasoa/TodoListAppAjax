@@ -27,20 +27,24 @@ before_action :authenticate_user!
 
   def update
     @task = Task.find(params[:id])
-    @task.update(task_params)
+    
 
     value = params[:value]
     if value.to_i == 1
       @task.status = true
+      @task.save
     else
       @task.status = false
+      @task.save
     end
-    if @task.save
+   
     respond_to do |format|
-      format.html {redirect_to root_path}
+      format.html {
+        @task.update(task_params)
+        redirect_to root_path}
       format.js {}  
       flash[:notice] = "Task edited"
-    end
+   
     end
   end
    
@@ -55,7 +59,6 @@ before_action :authenticate_user!
     respond_to do |format|
       format.html{
         redirect_to root_path
-        flash[:notice] = "Task created"
       }
       format.js{}
     end

@@ -1,1 +1,7 @@
-alert("The task is finished?");
+alert("The task is finished <%=@task.title%> ?");
+
+if (<%= @task.status === true%>) {
+	document.getElementById('<%= @task.id%>').style.textDecoration = "line-through";
+}else{
+	document.getElementById('<%= @task.id%>').style.textDecoration = "none";
+}

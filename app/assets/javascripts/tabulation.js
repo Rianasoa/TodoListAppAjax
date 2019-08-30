@@ -2,7 +2,13 @@ var counter = 0;
 var slides = [];
 
 $(document).ready(function(){
-	let title = $('.category-title');
+
+    $('.emailbody').hide();
+      $('.emailobject').click(function(){   
+        $(this).next().toggle();
+});
+	
+  let title = $('.category-title');
 	let content = title.next();
 	content.hide();
 	title.on('click',function(){
@@ -66,100 +72,102 @@ $(document).ready(function(){
 	  }
 	};
 
-//Carroussel
+// //Carroussel
 	
-	$('img.rounded-circle').each(function(index, item) {
-      slides.push($(item).attr('src'));
-    });
+// 	$('img.rounded-circle').each(function(index, item) {
+//       slides.push($(item).attr('src'));
+//     });
 
-    var slide = '';
-    var ul = "<div>";
-    for(let i = 0; i<slides.length; i++) {
-      slide += "<div class='slide'>"+"<img src='"+slides[i]+"' style='width:1500px;height:500px;margin-top:-300px;'/>"+"</div>";
-      $('.slides').html(slide);
-      ul += "<div data-active="+i+" class='item mr-1' style='width:10px;height:10px;background:#fff;border-radius:50%;border:1px solid #000;'></div></div>";
-      $('.captions').html(ul);
-    }
+//     var slide = '';
+//     var ul = "<div>";
+//     for(let i = 0; i<slides.length; i++) {
+//       slide += "<div class='slide'>"+"<img src='"+slides[i]+"' style='width:1500px;height:500px;margin-top:-300px;'/>"+"</div>";
+//       $('.slides').html(slide);
+//       ul += "<div data-active="+i+" class='item mr-1' style='width:10px;height:10px;background:#fff;border-radius:50%;border:1px solid #000;'></div></div>";
+//       $('.captions').html(ul);
+//     }
 
-    $('.slide').each(function(index, value){
-      if(index !== 0) {
-        $('.slide').eq(index).hide();
-      }
-    });
+//     $('.slide').each(function(index, value){
+//       if(index !== 0) {
+//         $('.slide').eq(index).hide();
+//       }
+//     });
     
-    load();
-    change();
+//     load();
+//     change();
 
-  });
+//   });
 
-  function next() {
+//   function next() {
 
-    $('.item').removeClass('active');
-    if(counter <= slides.length-1) {
-      $($('.item')[counter]).addClass('active');
-      slide = "<div class='slide'>"+"<img src='"+slides[counter]+"' />"+"</div>";
-      $('.slides').html(slide);
+//     $('.item').removeClass('active');
+//     if(counter <= slides.length-1) {
+//       $($('.item')[counter]).addClass('active');
+//       slide = "<div class='slide'>"+"<img src='"+slides[counter]+"' />"+"</div>";
+//       $('.slides').html(slide);
 
-    } else {
-      counter = slides.length-1;
-      if(counter == slides.length-1){
-        $($('.item')[slides.length-1]).addClass('active');
-      }
-    }
+//     } else {
+//       counter = slides.length-1;
+//       if(counter == slides.length-1){
+//         $($('.item')[slides.length-1]).addClass('active');
+//       }
+//     }
 
 
-    counter++;
+//     counter++;
 
-  }
+//   }
 
-  function prev() {
-    counter--;
+//   function prev() {
+//     counter--;
 
-    $('.item').removeClass('active');
-    if(counter >= 0) {
-      $($('.item')[counter]).addClass('active');
-      slide = "<div class='slide'>"+"<img src='"+slides[counter]+"' />"+"</div>";
-      $('.slides').html(slide);
+//     $('.item').removeClass('active');
+//     if(counter >= 0) {
+//       $($('.item')[counter]).addClass('active');
+//       slide = "<div class='slide'>"+"<img src='"+slides[counter]+"' />"+"</div>";
+//       $('.slides').html(slide);
 
-    } else {
+//     } else {
       
-      counter = 0;
+//       counter = 0;
 
-    }
+//     }
 
-  }
+//   }
 
-  function load() {
-    window.setInterval(function() {
-      $('.item').removeClass('active');
-      $('.item').each(function(i,k){
-        $($('.item')[counter]).addClass('active');
-      });
+//   function load() {
+//     window.setInterval(function() {
+//       $('.item').removeClass('active');
+//       $('.item').each(function(i,k){
+//         $($('.item')[counter]).addClass('active');
+//       });
 
-      slide = "<div class='slide'>"+"<img src='"+slides[counter]+"' />"+"</div>";
-      $('.slides').html(slide);
+//       slide = "<div class='slide'>"+"<img src='"+slides[counter]+"' />"+"</div>";
+//       $('.slides').html(slide);
 
-      if(counter == slides.length-1) {
-        counter = -1;
-      }
+//       if(counter == slides.length-1) {
+//         counter = -1;
+//       }
 
-      counter++;
-    },50000);
-  }
+//       counter++;
+//     },50000);
+//   }
 
-  function change() {
-    $('.item').each(function(index, item){
-      $(item).on('click', function(event){
-        $('.item').removeClass('active');
-        $(this).addClass('active');
+//   function change() {
+//     $('.item').each(function(index, item){
+//       $(item).on('click', function(event){
+//         $('.item').removeClass('active');
+//         $(this).addClass('active');
 
-        slide = "<div class='slide'>"+"<img src='"+slides[index]+"' />"+"</div>";
-        $('.slides').html(slide);
+//         slide = "<div class='slide'>"+"<img src='"+slides[index]+"' />"+"</div>";
+//         $('.slides').html(slide);
 
-        counter = $(this).data('active');
-        event.preventDefault();
-      })
+//         counter = $(this).data('active');
+//         event.preventDefault();
+//       })
 
-    });
+//     });
 
-};
+ 
+
+});
