@@ -1,3 +1,7 @@
+<div>	
+<a href="/emails" class="btn btn-primary" data-method="post" data-remote="true">Reçevoir un email</a>
+</div><br>
+
 <table class="table">
   <thead>
     <tr>
@@ -6,9 +10,9 @@
       <th scope="col">Body Email</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="email">
     	<% @emails.each do |email|%>
-    <tr>
+    <tr id="<%=email.id%>">
       <th scope="row"><%= email.id%></th>
       <td class="emailobject"><%= email.object%></td>
       <td class="emailbody"><%= email.body%></td>
@@ -17,4 +21,5 @@
     <%end%>
     
   </tbody>
+
 </table>
